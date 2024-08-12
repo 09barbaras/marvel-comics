@@ -1,1 +1,15 @@
-<h1 class="font-bold text-2xl">Marvel comics</h1>
+<%= turbo_frame_tag "comics" do %>
+    <div class="grid grid-cols-5 gap-4">
+      <%= render @comics, cache: true %>
+    </div>
+
+    <div class="flex w-full justify-between mt-6">
+      <% if @prev_page %>
+        <%= link_to 'PREVIOUS PAGE ', comics_path(page: @prev_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
+      <% else %>
+        <span></span>
+      <% end %>
+
+      <%= link_to 'NEXT PAGE', comics_path(page: @next_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
+    </div>
+<% end %>

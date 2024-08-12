@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+ .comic-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.comic-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.comic-title {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  color: black;
+  padding: 8px 16px;
+  display: none;
+  border-bottom: 5px solid red;
+}
+
+.comic-container:hover::before {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.comic-container:hover .comic-title {
+  display: block;
+}

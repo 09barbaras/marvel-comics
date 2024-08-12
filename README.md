@@ -10,6 +10,7 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+Create `.env` with the appropriate variables file (check `.env.example`)
 
 * Database creation
   `bin/rails db:create`
