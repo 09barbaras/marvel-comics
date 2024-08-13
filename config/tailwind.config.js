@@ -1,4 +1,4 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
@@ -12,6 +12,12 @@ module.exports = {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
+      inset: {
+        '26': '6.5rem',
+      },
+      boxShadow: {
+        'xxs': '2px 2px 1px rgba(0, 0, 0, 0.25)',
+      },
     },
   },
   plugins: [
@@ -19,4 +25,4 @@ module.exports = {
     require('@tailwindcss/typography'),
     require('@tailwindcss/container-queries'),
   ]
-}
+};

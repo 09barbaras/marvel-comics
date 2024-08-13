@@ -3,6 +3,8 @@ class ComicsController < ApplicationController
 
   # Get comics from Marvel API page by page
   def index
+    # TODO: Handle search by character
+
     page = params[:page] || 1
     results = MarvelApiService.new.get_comics(page, PAGE_SIZE)
     @comics = Comic.from_api_response(results)

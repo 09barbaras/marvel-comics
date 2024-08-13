@@ -1,4 +1,7 @@
-<div class="comic-container">
-  <%= image_tag comic.thumbnail, class: "w-full h-full object-cover" %>
-  <div class="comic-title"><%= comic.title %></div>
-</div>
+<turbo-frame id="<%= dom_id comic %>" class="block">
+  <%# TODO: add/remove favourite %>
+  <div class="comic-container">
+    <%= image_tag comic.thumbnail, class: "w-full h-full object-cover" %>
+    <div class="comic-title"><%= comic.title %></div>
+  </div>
+</turbo-frame>

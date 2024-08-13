@@ -11,11 +11,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="bg-zinc-800">
-    <div class="bg-red-600/[.90] w-full py-6 text-center fixed top-0 left-0 z-10">
-      <%= image_tag 'marvel_logo.png', alt: 'Marvel Logo', class: 'inline-block' %>
-    </div>
-    <main class="container mx-auto pt-28 px-6 pb-6 min-h-screen">
+  <body>
+    <main class="bg-zinc-800">
       <%= yield %>
     </main>
   </body>

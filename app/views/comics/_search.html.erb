@@ -1,0 +1,11 @@
+<%= form_with url: comics_path, method: :get, local: true, data: { controller: "search" } do %>
+  <div class="pt-4">
+    <input 
+      type="text" 
+      name="character" 
+      placeholder="Search by character" 
+      class="px-2 min-w-96 rounded text-xs italic border-none shadow-xxs focus:ring-0"
+      data-search-target="input"
+    />
+  </div>
+<% end %>

@@ -32,6 +32,7 @@ class MarvelApiService
       headers = {"Accept" => "*/*"}
       headers['If-None-Match'] = etag if etag
 
+      # TODO: handle slow response times
       response = @connection.get("/v1/public/comics", {
         ts: ts, 
         apikey: @public_key,
