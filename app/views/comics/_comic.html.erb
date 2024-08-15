@@ -1,7 +1,26 @@
-<turbo-frame id="<%= dom_id comic %>" class="block">
-  <%# TODO: add/remove favourite %>
-  <div class="comic-container">
+<turbo-frame id="<%= dom_id(comic) %>" class="block">
+  <div class="comic-container relative <%= 'favorite' if comic.favorite?(current_user) %>">
     <%= image_tag comic.thumbnail, class: "w-full h-full object-cover" %>
-    <div class="comic-title"><%= comic.title %></div>
+    <div class="comic-title <%= 'favorite' if comic.favorite?(current_user) %>"><%= comic.title %></div>
+    <div class="p-2 absolute top-0 right-0">
+      <%= form_with url: favorite_comic_path(comic.id), method: :post, data: { turbo_frame: dom_id(comic) } do %> 
+        <%= hidden_field_tag :comic_id, comic.id %>
+        <%= hidden_field_tag :page, @current_page %>
+        <button type="submit">
+          <% if comic.favorite?(current_user) %>
+            <%= image_tag "heart_on.png" %>
+          <% else %>
+            <%= image_tag "heart_off.png", 
+              class: "favorite-icon", 
+              data: { 
+                action: "mouseover->comics#hover mouseout->comics#unhover", 
+                hover_src: asset_path("heart_hover.png"), 
+                off_src: asset_path("heart_off.png"), 
+                search_target: "favoriteIcon"
+              } %>
+          <% end %>
+        </button>
+      <% end %>
+    </div>
   </div>
 </turbo-frame>

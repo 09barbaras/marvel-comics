@@ -1,0 +1,9 @@
+  <div class="flex w-full justify-between mt-6">
+    <% if @prev_page %>
+      <%= link_to 'PREVIOUS PAGE ', comics_path(page: @prev_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
+    <% else %>
+      <span></span>
+    <% end %>
+
+    <%= link_to 'NEXT PAGE', comics_path(page: @next_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
+  </div>

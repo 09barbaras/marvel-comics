@@ -3,18 +3,9 @@
   <%= render 'search' %>
 </div>
 
-<div class="mx-auto pt-40 px-6 pb-6 min-h-screen">
-  <div class="grid grid-cols-5 gap-4"  data-controller="comics">
+<div class="mx-auto pt-40 px-20 pb-6 min-h-screen">
+  <div class="grid grid-cols-5 gap-4" data-controller="comics">
     <%= render @comics %>
   </div>
-
-  <div class="flex w-full justify-between mt-6">
-    <% if @prev_page %>
-      <%= link_to 'PREVIOUS PAGE ', comics_path(page: @prev_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
-    <% else %>
-      <span></span>
-    <% end %>
-
-    <%= link_to 'NEXT PAGE', comics_path(page: @next_page), class: "bg-white text-red-500 font-bold px-4 py-2" %>
-  </div>
+  <%= render 'pagination' %>
 </div>
