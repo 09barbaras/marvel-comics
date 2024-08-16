@@ -4,8 +4,14 @@
 </div>
 
 <div class="mx-auto pt-40 px-20 pb-6 min-h-screen">
+  <% if @comics.size > 0 %>
   <div class="grid grid-cols-5 gap-4" data-controller="comics">
     <%= render @comics %>
   </div>
   <%= render 'pagination' %>
+  <% else %>
+    <div class="text-center text-2xl text-white pt-40">
+      No comics found
+    </div>
+  <% end %>
 </div>

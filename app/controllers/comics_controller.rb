@@ -5,11 +5,9 @@ class ComicsController < ApplicationController
 
   # Get comics from Marvel API page by page
   def index
-    # TODO: Handle search by character
-
     page = params[:page] || 1
-    results = MarvelApiService.new.get_comics(page, PAGE_SIZE)
-    @comics = Comic.from_api_response(results)
+    @character = params[:character] || nil
+    @comics = Marvel::SearchComicsService.perform(page, PAGE_SIZE, @character)
     @current_page = page.to_i
     @next_page = @current_page + 1
     @prev_page = @current_page > 1 ? @current_page - 1 : nil
