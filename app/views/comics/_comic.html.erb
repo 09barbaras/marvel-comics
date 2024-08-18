@@ -6,6 +6,7 @@
       <%= form_with url: favorite_comic_path(comic.id), method: :post, data: { turbo_frame: dom_id(comic) } do %> 
         <%= hidden_field_tag :comic_id, comic.id %>
         <%= hidden_field_tag :page, @current_page %>
+        <%= hidden_field_tag :character, @character %>
         <button type="submit">
           <% if comic.favorite?(current_user) %>
             <%= image_tag "heart_on.png" %>

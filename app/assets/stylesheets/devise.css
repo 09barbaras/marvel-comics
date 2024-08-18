@@ -1,0 +1,26 @@
+/* Devise styles */
+.field {
+  color: rgb(0 0 0);
+  width: 100%;
+  min-width: 300px;
+  padding-bottom: 12px;
+}
+
+.field input {
+  width: 100%;
+}
+
+.checkbox {
+  width: 16px !important;
+}
+
+.actions {
+  background-color: rgb(220 38 38);
+  border-radius: 8px;
+  color: white;
+  width: 100%;
+  padding: 8px 16px;
+  margin: 16px 0;
+  display: flex;
+  justify-content: center;
+}

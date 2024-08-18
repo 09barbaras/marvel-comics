@@ -18,6 +18,6 @@ class ComicsController < ApplicationController
     favorite = FavoriteComic.find_by(user: current_user, comic_id: comic_id)
     favorite.present? ? favorite.destroy : FavoriteComic.create(user: current_user, comic_id: comic_id)
 
-    redirect_to comics_path(page: params[:page])
+    redirect_to comics_path(page: params[:page], character: params[:character])
   end
 end
