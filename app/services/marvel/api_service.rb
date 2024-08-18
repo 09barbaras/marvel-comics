@@ -9,8 +9,6 @@ module Marvel
         url: ENV['MARVEL_API_BASE_URL'],
         headers: { 'Accept' => '*/*' }
       ) do |builder|
-        # Parses JSON response bodies. If not valid JSON, raises Faraday::ParsingError
-        builder.response :json
         # Raises an error on 4xx and 5xx responses
         builder.response :raise_error
         builder.response :logger
@@ -37,7 +35,7 @@ module Marvel
 
       @connection.get('/v1/public/comics', query_params)
     rescue StandardError => e
-      puts "GET /comics failed: #{e.message}"
+      Rails.logger.error "GET /comics failed: #{e.message}"
       nil
     end
 
@@ -51,7 +49,7 @@ module Marvel
 
       @connection.get('/v1/public/characters', query_params)
     rescue StandardError => e
-      puts "GET /characters failed: #{e.message}"
+      Rails.logger.error "GET /characters failed: #{e.message}"
       nil
     end
 

@@ -2,6 +2,7 @@ class Comic
   include ActiveModel::API
   include ActiveModel::Attributes
 
+  # ID of the comic from Marvel API
   attribute :id, :string
   attribute :title, :string
   attribute :thumbnail, :string

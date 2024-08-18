@@ -23,16 +23,18 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails', '~> 2.7.2'
   gem 'factory_bot_rails'
+  gem 'faker', '~> 3.4', '>= 3.4.2'
+  gem 'pry'
   gem 'rspec-rails'
   gem 'rubocop-rspec'
 end
 
 group :development do
   gem 'annotate'
-  gem 'pry'
   gem 'web-console'
 end
 
 group :test do
   gem 'capybara'
+  gem 'webmock'
 end

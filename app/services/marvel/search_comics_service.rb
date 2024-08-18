@@ -20,7 +20,8 @@ module Marvel
         characters_response = ApiService.new.get_characters_by_name(character)
         return nil unless characters_response.present?
 
-        characters_response.body['data']['results'].map { |c| c['id'] }
+        parsed_body = JSON.parse(characters_response.body)
+        parsed_body['data']['results'].map { |c| c['id'] }
       end
     end
 
@@ -29,7 +30,8 @@ module Marvel
         response = ApiService.new.get_comics(page, page_size, characters)
         return [] unless response.present?
 
-        response.body['data']['results']
+        parsed_body = JSON.parse(response.body)
+        parsed_body['data']['results']
       end
     end
 
@@ -48,21 +50,6 @@ module Marvel
           title: comic_data['title']&.upcase,
           thumbnail: "#{comic_data['thumbnail']['path']}.#{comic_data['thumbnail']['extension']}"
         ).freeze
-      end
-    end
-
-    def cached_response(response, cache_key, etag_cache_key)
-      return [] unless response.present?
-
-      case response.status
-      when 304
-        Rails.cache.read(cache_key)
-      when 200
-        Rails.cache.write(etag_cache_key, response.headers['etag'])
-        Rails.cache.write(cache_key, response.body['data']['results'])
-        response.body['data']['results']
-      else
-        []
       end
     end
   end

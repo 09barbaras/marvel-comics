@@ -14,3 +14,13 @@ Style/Documentation:
 Metrics/MethodLength:
   Enabled: true
   Max: 20
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 25
+
+RSpec/MessageSpies:
+  Enabled: false

@@ -10,5 +10,8 @@
 #
 FactoryBot.define do
   factory :favorite_comic do
+    comic_id { Faker::Number.number(digits: 10) }
+
+    association :user
   end
 end
