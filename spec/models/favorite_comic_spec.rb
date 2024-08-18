@@ -8,8 +8,8 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class FavoriteComic < ApplicationRecord
-  belongs_to :user
+require 'rails_helper'
 
-  validates :comic_id, :user, presence: true
+RSpec.describe FavoriteComic, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

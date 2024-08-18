@@ -12,9 +12,7 @@
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :rememberable, :validatable
+FactoryBot.define do
+  factory :user do
+  end
 end

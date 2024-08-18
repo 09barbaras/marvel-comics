@@ -12,9 +12,8 @@
 #  reset_password_sent_at :datetime
 #  remember_created_at    :datetime
 #
-class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :rememberable, :validatable
+require 'rails_helper'
+
+RSpec.describe User, type: :model do
+  pending "add some examples to (or delete) #{__FILE__}"
 end

@@ -8,8 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class FavoriteComic < ApplicationRecord
-  belongs_to :user
-
-  validates :comic_id, :user, presence: true
+FactoryBot.define do
+  factory :favorite_comic do
+  end
 end

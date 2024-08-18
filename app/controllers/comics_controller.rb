@@ -15,8 +15,8 @@ class ComicsController < ApplicationController
 
   def toggle_favorite
     comic_id = params[:id]
-    favorite = FavoriteComic.find_by(user: current_user, comic_id: comic_id)
-    favorite.present? ? favorite.destroy : FavoriteComic.create(user: current_user, comic_id: comic_id)
+    favorite = FavoriteComic.find_by(user: current_user, comic_id:)
+    favorite.present? ? favorite.destroy : FavoriteComic.create(user: current_user, comic_id:)
 
     redirect_to comics_path(page: params[:page], character: params[:character])
   end

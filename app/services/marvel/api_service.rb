@@ -3,11 +3,11 @@ require 'digest'
 
 module Marvel
   class ApiService
-    def initialize()
-      @public_key = ENV["MARVEL_PUBLIC_KEY"].freeze
+    def initialize
+      @public_key = ENV['MARVEL_PUBLIC_KEY'].freeze
       @connection = Faraday.new(
-        url: ENV["MARVEL_API_BASE_URL"],
-        headers: {"Accept" => "*/*"}
+        url: ENV['MARVEL_API_BASE_URL'],
+        headers: { 'Accept' => '*/*' }
       ) do |builder|
         # Parses JSON response bodies. If not valid JSON, raises Faraday::ParsingError
         builder.response :json
@@ -23,34 +23,34 @@ module Marvel
       offset = (page.to_i - 1) * page_size
 
       query_params = {
-        ts: ts, 
+        ts:,
         apikey: @public_key,
-        hash: generate_hash, 
-        offset: offset, 
+        hash: generate_hash,
+        offset:,
         limit: page_size,
-        format: "comic",
-        formatType: "comic",
+        format: 'comic',
+        formatType: 'comic',
         noVariants: true,
-        orderBy: "-focDate"
+        orderBy: '-focDate'
       }
       query_params[:characters] = characters if characters
 
-      @connection.get("/v1/public/comics", query_params)
-    rescue => e
+      @connection.get('/v1/public/comics', query_params)
+    rescue StandardError => e
       puts "GET /comics failed: #{e.message}"
       nil
     end
 
     def get_characters_by_name(name)
       query_params = {
-        ts: ts, 
+        ts:,
         apikey: @public_key,
-        hash: generate_hash, 
-        name: name
+        hash: generate_hash,
+        name:
       }
 
-      @connection.get("/v1/public/characters", query_params)
-    rescue => e
+      @connection.get('/v1/public/characters', query_params)
+    rescue StandardError => e
       puts "GET /characters failed: #{e.message}"
       nil
     end
@@ -58,7 +58,7 @@ module Marvel
     private
 
     def generate_hash
-      Digest::MD5.hexdigest("#{ts}#{ENV["MARVEL_PRIVATE_KEY"]}#{@public_key}")
+      Digest::MD5.hexdigest("#{ts}#{ENV['MARVEL_PRIVATE_KEY']}#{@public_key}")
     end
 
     def ts

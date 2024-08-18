@@ -1,0 +1,16 @@
+require: rubocop-rspec
+
+AllCops:
+  Exclude:
+    - bin/bundle
+
+Style/FrozenStringLiteralComment:
+  Enabled: true
+  EnforcedStyle: never
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: true
+  Max: 20

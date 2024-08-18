@@ -8,6 +8,6 @@ class Comic
   validates :id, :title, :thumbnail, presence: true
 
   def favorite?(user)
-    FavoriteComic.find_by(user: user, comic_id: id).present?
+    FavoriteComic.find_by(user:, comic_id: id).present?
   end
 end
